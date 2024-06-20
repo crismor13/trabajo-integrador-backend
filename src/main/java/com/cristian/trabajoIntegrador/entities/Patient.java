@@ -2,6 +2,7 @@ package com.cristian.trabajoIntegrador.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -21,13 +22,18 @@ public class Patient {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @NotBlank(message = "Apellido is mandatory")
     private String lastName;
+    @NotBlank(message = "Nombre is mandatory")
     private String name;
+    @NotBlank(message = "Dni is mandatory")
     private String dni;
+    @NotBlank(message = "Fecha de ingreso is mandatory")
     private LocalDate startDate;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "domicilio_id")
+    @NotBlank(message = "Domicilio is mandatory")
     private Address address;
 
     @OneToMany(mappedBy = "patient",  cascade = CascadeType.ALL)
