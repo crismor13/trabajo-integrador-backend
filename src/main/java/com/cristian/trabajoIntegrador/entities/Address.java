@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name ="domicilios")
+@Table(name ="addresses")
 
 public class Address {
     @Id

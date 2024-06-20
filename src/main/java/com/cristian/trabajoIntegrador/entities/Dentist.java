@@ -13,7 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name ="odontologos")
+@Table(name ="dentists")
 public class Dentist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

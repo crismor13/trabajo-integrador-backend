@@ -14,7 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name ="pacientes")
+@Table(name ="patients")
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
