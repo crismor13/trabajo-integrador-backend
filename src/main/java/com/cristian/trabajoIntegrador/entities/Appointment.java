@@ -1,6 +1,7 @@
 package com.cristian.trabajoIntegrador.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -19,9 +20,12 @@ public class Appointment {
     Long id;
 
     @ManyToOne
-    Patient patient;
+    Patient paciente;
     @ManyToOne
-    Dentist dentist;
-    LocalDate date;
-    LocalTime time;
+    Dentist odontologo;
+
+    @NotNull(message = "fecha is mandatory")
+    LocalDate fecha;
+    @NotNull(message = "hora is mandatory")
+    LocalTime hora;
 }

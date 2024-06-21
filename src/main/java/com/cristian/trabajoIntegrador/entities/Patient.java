@@ -3,6 +3,7 @@ package com.cristian.trabajoIntegrador.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -23,22 +24,22 @@ public class Patient {
     private Long id;
 
     @NotBlank(message = "Apellido is mandatory")
-    private String lastName;
+    private String apellido;
     @NotBlank(message = "Nombre is mandatory")
-    private String name;
+    private String nombre;
     @NotBlank(message = "Dni is mandatory")
     private String dni;
-    @NotBlank(message = "Fecha de ingreso is mandatory")
-    private LocalDate startDate;
+    @NotNull(message = "Fecha de ingreso is mandatory")
+    private LocalDate fechaIngreso;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "domicilio_id")
-    @NotBlank(message = "Domicilio is mandatory")
-    private Address address;
+    @NotNull(message = "Domicilio is mandatory")
+    private Address domicilio;
 
-    @OneToMany(mappedBy = "patient",  cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "paciente",  cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Appointment> appointmentsSet = new HashSet<>();
+    private Set<Appointment> turnoSet = new HashSet<>();
 
 
 }

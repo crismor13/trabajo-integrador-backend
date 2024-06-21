@@ -2,6 +2,7 @@ package com.cristian.trabajoIntegrador.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Getter
@@ -17,11 +18,11 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank(message = "Calle is mandatory")
-    private String street;
-    @NotBlank(message = "Número is mandatory")
-    private int number;
-    @NotBlank(message = "Localidad is mandatory")
-    private String locality;
+    private String calle;
+    @NotNull(message = "Número is mandatory")
+    private int numero;
+    @NotNull(message = "Localidad is mandatory")
+    private String localidad;
     @NotBlank(message = "Provincia is mandatory")
-    private String province;
+    private String provincia;
 }

@@ -18,22 +18,19 @@ public class GlobalException {
     public ResponseEntity<String> recursoNoEncontrado(ResourceNotFoundException e){
         return ResponseEntity.status(HttpStatusCode.valueOf(404)).body(e.getMessage());
     }
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<String> peticicionMala(MethodArgumentNotValidException e){
-        return ResponseEntity.status(HttpStatusCode.valueOf(400)).body(e.getMessage());
-    }
+//    @ExceptionHandler(MethodArgumentNotValidException.class)
+//    public ResponseEntity<String> peticicionMala(MethodArgumentNotValidException e){
+//        return ResponseEntity.status(HttpStatusCode.valueOf(400)).body(e.getMessage());
+//    }
 
-
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String, String> handleValidationExceptions(
-            MethodArgumentNotValidException ex) {
+    public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
         ex.getBindingResult().getAllErrors().forEach((error) -> {
             String fieldName = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
-        return errors;
+        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 }

@@ -20,13 +20,13 @@ public class Dentist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank(message = "Matrícula is mandatory")
-    private String licenseNumber;
+    private String nroMatricula;
     @NotBlank(message = "Nombre is mandatory")
-    private String name;
+    private String nombre;
     @NotBlank(message = "Apellido is mandatory")
-    private String lastName;
+    private String apellido;
 
-    @OneToMany(mappedBy = "dentist", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "odontologo", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Appointment> appointmentsSet = new HashSet<>();
+    private Set<Appointment> turnoSet = new HashSet<>();
 }
